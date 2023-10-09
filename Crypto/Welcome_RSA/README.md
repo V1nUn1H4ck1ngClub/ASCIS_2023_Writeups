@@ -8,8 +8,10 @@ Look at the challenge script, this is what we got:
 + The ciphertext is encrypted in `RSA-CRT` way, where the plaintext is computed as:
 
 $$
+\begin{aligned}
 c_p \equiv m^e \pmod p \\
 c_q \equiv m^e \pmod q
+\end{aligned}
 $$
 
 The first thing we can say is with both $N$ and $\phi$, one can really easily to factor the number $N$. More specifically, you can got the idea from this [Mathematic Stack Exchange](https://math.stackexchange.com/questions/2087704/factoring-n-when-phin-is-given) question. For us, we use this below Sage script:
@@ -30,8 +32,10 @@ And got the result:
 The remain part is really easy. You can use Chinese Remainder Theorem to decrypt the message by solving the system of congruence: 
 
 $$
+\begin{aligned}
 m_p \equiv c_p^{(d \pmod{p-1})} \pmod p \\
 m_q \equiv c_p^{(d \pmod{p-1})} \pmod q
+\end{aligned}
 $$
 
 The solution of this system is essentially $m$ modulo $N$. The solved script is also attached :).
